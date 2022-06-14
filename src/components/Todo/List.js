@@ -1,10 +1,14 @@
 import React from "react";
 import Todo from "./Todo";
 
-const List = () => {
+const List = ({ list }) => {
+  console.log(list);
+
   return (
     <div>
-      <Todo />
+      {list.map((task) => (
+        <Todo task={task} />
+      ))}
     </div>
   );
 };

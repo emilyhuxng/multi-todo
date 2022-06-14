@@ -25,6 +25,15 @@ const todoSlice = createSlice({
         }
       });
     },
+    addTodo(state, action) {
+      state.todoLists = state.todoLists.map((todoList) => {
+        if (action.payload.id === todoList.id) {
+          return { ...todoList, list: [...todoList.list, action.payload.taskContent]}
+        } else {
+          return todoList;
+        }
+      })
+    }
   },
 });
 

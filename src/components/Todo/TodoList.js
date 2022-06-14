@@ -9,8 +9,8 @@ const TodoList = (props) => {
     <div className="rounded-sm border-solid border-slate-400 border w-1/3">
       <TodoHeader id={props.id} title={props.title} />
       <Filters />
-      <List />
-      <AddBar />
+      <List list={props.list} />
+      <AddBar id={props.id} />
     </div>
   );
 };

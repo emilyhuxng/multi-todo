@@ -11,7 +11,7 @@ function App() {
     <div>
       <Header />
       {todoLists.map((todoList, index) => (
-        <TodoList id={todoList.id} title={todoList.title} />
+        <TodoList id={todoList.id} title={todoList.title} list={todoList.list} />
       ))}
     </div>
   );
