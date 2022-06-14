@@ -8,8 +8,8 @@ const TodoList = (props) => {
   return (
     <div className="rounded-sm border-solid border-slate-400 border w-1/3">
       <TodoHeader id={props.id} title={props.title} />
-      <Filters />
-      <List list={props.list} />
+      <Filters listId={props.id} />
+      <List list={props.list} listId={props.id} />
       <AddBar id={props.id} />
     </div>
   );

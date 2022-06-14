@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { todoActions } from "../../store";
 
-const Filters = () => {
+const Filters = ({ listId }) => {
+  const dispatch = useDispatch();
   const [selected, setSelected] = useState("all");
 
-  const selectedStyle = "border-b border-blue-400 border-solid text-blue-400";
+  const selectedStyle = "border-b border-blue-400 border-solid text-blue-400 pt-0.5";
 
   const clickHandler = (selectedFilter) => {
     setSelected(selectedFilter);
+    dispatch(todoActions.changeFilter({listId, filter: selectedFilter}))
   };
 
   return (

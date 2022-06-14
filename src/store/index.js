@@ -10,6 +10,7 @@ const todoSlice = createSlice({
       state.todoLists.push({
         id: "list" + state.todoLists.length,
         title: "Click me to edit title",
+        filter: "all",
         list: [],
       });
     },
@@ -28,12 +29,49 @@ const todoSlice = createSlice({
     addTodo(state, action) {
       state.todoLists = state.todoLists.map((todoList) => {
         if (action.payload.id === todoList.id) {
-          return { ...todoList, list: [...todoList.list, action.payload.taskContent]}
+          return {
+            ...todoList,
+            list: [
+              ...todoList.list,
+              {
+                ...action.payload.taskContent,
+                itemId: "item" + todoList.list.length,
+              },
+            ],
+          };
         } else {
           return todoList;
         }
-      })
-    }
+      });
+    },
+    changeSelected(state, action) {
+      state.todoLists = state.todoLists.map((todoList) => {
+        if (action.payload.listId === todoList.id) {
+          const newList = todoList.list.map((item) => {
+            if (item.itemId === action.payload.itemId) {
+              return { ...item, isSelected: action.payload.isSelected };
+            } else {
+              return item;
+            }
+          });
+          return {
+            ...todoList,
+            list: newList,
+          };
+        } else {
+          return todoList;
+        }
+      });
+    },
+    changeFilter(state, action) {
+      state.todoLists = state.todoLists.map((todoList) => {
+        if (action.payload.listId === todoList.id) {
+          return { ...todoList, filter: action.payload.filter };
+        } else {
+          return todoList;
+        }
+      });
+    },
   },
 });
 

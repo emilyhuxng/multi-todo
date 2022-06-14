@@ -11,13 +11,18 @@ const AddBar = ({ id }) => {
 
   const changeHandler = (event) => {
     setTask(event.target.value);
-  }
+  };
 
   const submitHandler = (event) => {
     event.preventDefault();
     console.log("Hello");
-    dispatch(todoActions.addTodo({id: id, taskContent: task}))
-  }
+    dispatch(
+      todoActions.addTodo({
+        id: id,
+        taskContent: { isSelected: false, content: task },
+      })
+    );
+  };
 
   return (
     <form className="flex justify-center items-center" onSubmit={submitHandler}>
@@ -29,7 +34,7 @@ const AddBar = ({ id }) => {
           </InputAdornment>
         }
         placeholder="Add Item..."
-        inputProps={{style: {fontSize: 12}}}
+        inputProps={{ style: { fontSize: 12 } }}
         className="w-[90%] m-4 border border-red-900 border-solid"
         onChange={changeHandler}
         value={task}
