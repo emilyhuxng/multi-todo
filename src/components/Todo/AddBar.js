@@ -15,7 +15,6 @@ const AddBar = ({ id }) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log("Hello");
     dispatch(
       todoActions.addTodo({
         id: id,

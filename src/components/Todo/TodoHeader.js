@@ -1,12 +1,11 @@
 import React from "react";
 import GridViewIcon from "@mui/icons-material/GridView";
 import CloseIcon from "@mui/icons-material/Close";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { todoActions } from "../../store";
 
 const TodoHeader = ({ id, title }) => {
   const dispatch = useDispatch();
-  const todoLists = useSelector((state) => state.todoLists);
 
   const titleChangeHandler = (event) => {
     dispatch(todoActions.changeTitle({ id: id, title: event.target.value }));

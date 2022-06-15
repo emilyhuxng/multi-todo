@@ -1,12 +1,8 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Todo from "./Todo";
 
-const List = ({ list, listId }) => {
+const List = ({ list, listId, filter }) => {
   console.log(list);
-  const filter = useSelector(
-    (state) => state.todoLists.find((list) => list.id === listId).filter
-  );
   let newList = list;
 
   if (filter === "active") {
@@ -24,7 +20,7 @@ const List = ({ list, listId }) => {
   return (
     <div>
       {newList.map((task) => (
-        <Todo task={task} listId={listId} />
+        <Todo listId={listId} itemId={task.itemId} content={task.content} isSelected={task.isSelected} />
       ))}
     </div>
   );

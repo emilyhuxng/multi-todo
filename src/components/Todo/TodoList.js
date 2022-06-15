@@ -4,13 +4,13 @@ import Filters from "./Filters";
 import List from "./List";
 import TodoHeader from "./TodoHeader";
 
-const TodoList = (props) => {
+const TodoList = ({listId, filter, title, list}) => {
   return (
-    <div className="rounded-sm border-solid border-slate-400 border w-1/3">
-      <TodoHeader id={props.id} title={props.title} />
-      <Filters listId={props.id} />
-      <List list={props.list} listId={props.id} />
-      <AddBar id={props.id} />
+    <div className="rounded-sm border-solid border-slate-400 border">
+      <TodoHeader id={listId} title={title} />
+      <Filters listId={listId} />
+      <List list={list} listId={listId} />
+      <AddBar id={listId} />
     </div>
   );
 };
