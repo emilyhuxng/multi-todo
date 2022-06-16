@@ -14,7 +14,7 @@ const Filters = ({ listId }) => {
   };
 
   return (
-    <div className="h-8 flex items-center border border-solid border-gray-100 text-sm justify-center">
+    <div className="h-8 flex items-center border border-solid border-gray-300 text-sm justify-center">
       <button
         className={
           "px-2 h-full " + (selected === "active" ? selectedStyle : "")

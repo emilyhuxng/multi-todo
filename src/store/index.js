@@ -19,7 +19,7 @@ const todoSlice = createSlice({
     },
     changeTitle(state, action) {
       state.todoLists = state.todoLists.map((todoList) => {
-        if (action.payload.id === todoList.id) {
+        if (action.payload.listId === todoList.listId) {
           return { ...todoList, title: action.payload.title };
         } else {
           return todoList;
@@ -28,7 +28,7 @@ const todoSlice = createSlice({
     },
     addTodo(state, action) {
       state.todoLists = state.todoLists.map((todoList) => {
-        if (action.payload.id === todoList.id) {
+        if (action.payload.listId === todoList.listId) {
           return {
             ...todoList,
             list: [
@@ -46,7 +46,7 @@ const todoSlice = createSlice({
     },
     changeSelected(state, action) {
       state.todoLists = state.todoLists.map((todoList) => {
-        if (action.payload.listId === todoList.id) {
+        if (action.payload.listId === todoList.listId) {
           const newList = todoList.list.map((item) => {
             if (item.itemId === action.payload.itemId) {
               return { ...item, isSelected: action.payload.isSelected };
@@ -65,7 +65,7 @@ const todoSlice = createSlice({
     },
     changeFilter(state, action) {
       state.todoLists = state.todoLists.map((todoList) => {
-        if (action.payload.listId === todoList.id) {
+        if (action.payload.listId === todoList.listId) {
           return { ...todoList, filter: action.payload.filter };
         } else {
           return todoList;
@@ -74,7 +74,7 @@ const todoSlice = createSlice({
     },
     changeTodo(state, action) {
       state.todoLists = state.todoLists.map((todoList) => {
-        if (action.payload.listId === todoList.id) {
+        if (action.payload.listId === todoList.listId) {
           const newList = todoList.list.map((item) => {
             if (item.itemId === action.payload.itemId) {
               return { ...item, content: action.payload.content };

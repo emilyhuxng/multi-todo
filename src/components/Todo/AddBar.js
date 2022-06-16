@@ -1,11 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import { Input, InputAdornment } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { TaskAltTwoTone } from "@mui/icons-material";
 import { todoActions } from "../../store";
 
-const AddBar = ({ id }) => {
+const AddBar = ({ listId }) => {
   const [task, setTask] = useState("");
   const dispatch = useDispatch();
 
@@ -17,14 +16,14 @@ const AddBar = ({ id }) => {
     event.preventDefault();
     dispatch(
       todoActions.addTodo({
-        id: id,
+        listId,
         taskContent: { isSelected: false, content: task },
       })
     );
   };
 
   return (
-    <form className="flex justify-center items-center" onSubmit={submitHandler}>
+    <form className="flex justify-center items-center border border-black mb-0" onSubmit={submitHandler}>
       <Input
         id="input-with-start-adornment"
         startAdornment={
@@ -34,7 +33,7 @@ const AddBar = ({ id }) => {
         }
         placeholder="Add Item..."
         inputProps={{ style: { fontSize: 12 } }}
-        className="w-[90%] m-4 border border-red-900 border-solid"
+        className="w-[90%] mx-4 my-2 border border-red-900 border-solid"
         onChange={changeHandler}
         value={task}
       />

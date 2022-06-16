@@ -1,7 +1,7 @@
 import React from "react";
 import GridViewIcon from "@mui/icons-material/GridView";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { todoActions } from "../../store";
 
 const Todo = ({ listId, itemId, content, isSelected }) => {
@@ -10,8 +10,7 @@ const Todo = ({ listId, itemId, content, isSelected }) => {
   const selectedStyle = isSelected ? "line-through" : "";
 
   const checkboxChangeHandler = (event) => {
-    console.log(event.target.checked);
-    console.log(listId + " " + itemId);
+    console.log(event.target.checked + " " + listId + " " + itemId);
     dispatch(
       todoActions.changeSelected({
         listId,
@@ -27,22 +26,21 @@ const Todo = ({ listId, itemId, content, isSelected }) => {
     );
   };
 
-
-
   const handleKeyPress = (event) => {
-    // event.preventDefault();
     if (event.code === "Enter") {
       event.target.blur();
     }
   };
+  // console.log(itemId + " " + isSelected)
 
   return (
-    <div className="border-2 border-red-600 border-solid h-10 flex items-center">
+    <div className="border-2 border-red-600 border-solid h-10 flex items-center w-full">
       <GridViewIcon className="mx-2" fontSize="small" />
       <input
         className="mx-1"
         type="checkbox"
         id="1"
+        checked={isSelected}
         onChange={checkboxChangeHandler}
       />
       <input
@@ -53,7 +51,7 @@ const Todo = ({ listId, itemId, content, isSelected }) => {
         onChange={todoChangeHandler}
         onKeyDown={handleKeyPress}
       />
-      <MoreVertIcon className="mx-2" />
+      <MoreVertIcon className="mr-2" />
     </div>
   );
 };

@@ -10,8 +10,8 @@ function App() {
   return (
     <div>
       <Header />
-      <div className="grid grid-cols-3 gap-8 px-8">
-        {todoLists.map((todoList, index) => (
+      <div className="grid grid-cols-3 gap-8 px-16">
+        {todoLists.map((todoList) => (
           <TodoList
             listId={todoList.listId}
             title={todoList.title}

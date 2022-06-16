@@ -6,11 +6,11 @@ import TodoHeader from "./TodoHeader";
 
 const TodoList = ({listId, filter, title, list}) => {
   return (
-    <div className="rounded-sm border-solid border-slate-400 border">
-      <TodoHeader id={listId} title={title} />
+    <div className="rounded-sm border-solid border-slate-400 border h-min">
+      <TodoHeader listId={listId} title={title} />
       <Filters listId={listId} />
-      <List list={list} listId={listId} />
-      <AddBar id={listId} />
+      <List list={list} listId={listId} filter={filter}/>
+      <AddBar listId={listId} />
     </div>
   );
 };
