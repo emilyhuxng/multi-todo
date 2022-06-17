@@ -13,7 +13,7 @@ const TodoHeader = ({ listId, title }) => {
 
   return (
     <div className="h-12 bg-slate-100 flex items-center ">
-      <GridViewIcon className="mx-2" />
+      <GridViewIcon className="mx-2 text-gray-400" />
       <input
         className="bg-transparent text-xl font-thin w-[80%] mr-1"
         value={title}
