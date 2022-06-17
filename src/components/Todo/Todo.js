@@ -51,7 +51,7 @@ const Todo = ({ listId, itemId, content, isSelected }) => {
         onChange={todoChangeHandler}
         onKeyDown={handleKeyPress}
       />
-      <Tooltip />
+      <Tooltip listId={listId} itemId={itemId} />
     </div>
   );
 };

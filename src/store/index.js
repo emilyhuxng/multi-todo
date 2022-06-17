@@ -91,6 +91,21 @@ const todoSlice = createSlice({
         }
       });
     },
+    removeTodo(state, action) {
+      state.todoLists.map((todoList) => {
+        if (action.payload.listId === todoList.listId) {
+          const newList = todoList.list.filter((item) => {
+            return item.itemId !== action.payload.itemId;
+          })
+          return {
+            ...todoList,
+            list: newList,
+          }
+        } else {
+          return todoList;
+        }
+      })
+    }
   },
 });
 
