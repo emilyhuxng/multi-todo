@@ -1,8 +1,8 @@
 import React from "react";
 import GridViewIcon from "@mui/icons-material/GridView";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useDispatch } from "react-redux";
 import { todoActions } from "../../store";
+import Tooltip from "../../ui/Tooltip";
 
 const Todo = ({ listId, itemId, content, isSelected }) => {
   // console.log(task);
@@ -34,7 +34,7 @@ const Todo = ({ listId, itemId, content, isSelected }) => {
   // console.log(itemId + " " + isSelected)
 
   return (
-    <div className="border-2 border-red-600 border-solid h-10 flex items-center w-full">
+    <div className="border h-10 flex items-center w-full">
       <GridViewIcon className="mx-2" fontSize="small" />
       <input
         className="mx-1"
@@ -51,7 +51,7 @@ const Todo = ({ listId, itemId, content, isSelected }) => {
         onChange={todoChangeHandler}
         onKeyDown={handleKeyPress}
       />
-      <MoreVertIcon className="mr-2" />
+      <Tooltip />
     </div>
   );
 };

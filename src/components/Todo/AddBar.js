@@ -23,7 +23,7 @@ const AddBar = ({ listId }) => {
   };
 
   return (
-    <form className="flex justify-center items-center border border-black mb-0" onSubmit={submitHandler}>
+    <form className="flex justify-center items-center mb-0 border-t-2" onSubmit={submitHandler}>
       <Input
         id="input-with-start-adornment"
         startAdornment={
@@ -33,7 +33,7 @@ const AddBar = ({ listId }) => {
         }
         placeholder="Add Item..."
         inputProps={{ style: { fontSize: 12 } }}
-        className="w-[90%] mx-4 my-2 border border-red-900 border-solid"
+        className="w-[90%] mx-4 my-2 "
         onChange={changeHandler}
         value={task}
       />
