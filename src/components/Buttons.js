@@ -18,7 +18,7 @@ const Buttons = ({ numOfLists }) => {
         main: "#ff4066",
       },
       success: {
-        main: "#78ff85",
+        main: "#4cd95a",
       },
     },
   });

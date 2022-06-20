@@ -14,10 +14,11 @@ const AddBar = ({ listId }) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    setTask("");
     dispatch(
       todoActions.addTodo({
         listId,
-        taskContent: { isSelected: false, content: task },
+        taskContent: { isSelected: false, content: task, dueDate: null, },
       })
     );
   };

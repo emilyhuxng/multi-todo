@@ -13,6 +13,7 @@ function App() {
       <div className="grid grid-cols-3 gap-8 px-16">
         {todoLists.map((todoList) => (
           <TodoList
+            key={todoList.listId}
             listId={todoList.listId}
             title={todoList.title}
             list={todoList.list}

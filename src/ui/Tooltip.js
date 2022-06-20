@@ -11,10 +11,12 @@ import { useState } from "react";
 const Tooltip = ({ listId, itemId }) => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(new Date());
+  const [selectedValue, setSelectedValue] = useState(null);
+  const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const deleteHandler = () => {
     dispatch(todoActions.removeTodo({ listId, itemId }));
+    setTooltipOpen(false);
   };
 
   const setDateHandler = () => {
@@ -24,19 +26,23 @@ const Tooltip = ({ listId, itemId }) => {
   const handleClose = (value) => {
     setOpen(false);
     setSelectedValue(value);
+    dispatch(todoActions.addDueDate({ listId, itemId, dueDate: value }));
     console.log(value);
   };
 
   return (
     <div>
       <Popup
-        trigger={(open) => (
+        trigger={
           <MoreVertIcon className="mx-1 text-gray-400 hover:text-black" />
-        )}
+        }
         position="right center"
         on="hover"
         closeOnDocumentClick
         arrow
+        onOpen={() => setTooltipOpen(true)}
+        onClose={() => setTooltipOpen(false)}
+        open={tooltipOpen}
       >
         <button
           className="border border-red-600 w-full flex justify-start m-0 h-[30px] hover:bg-gray-100 items-center"
@@ -53,7 +59,13 @@ const Tooltip = ({ listId, itemId }) => {
           Delete item
         </button>
       </Popup>
-      <Modal open={open} selectedValue={selectedValue} onClose={handleClose} />
+      <Modal
+        open={open}
+        selectedValue={selectedValue}
+        onClose={handleClose}
+        listId={listId}
+        itemId={itemId}
+      />
     </div>
   );
 };

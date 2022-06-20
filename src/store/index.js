@@ -92,25 +92,48 @@ const todoSlice = createSlice({
       });
     },
     removeTodo(state, action) {
-      state.todoLists.map((todoList) => {
+      state.todoLists = state.todoLists.map((todoList) => {
         if (action.payload.listId === todoList.listId) {
           const newList = todoList.list.filter((item) => {
             return item.itemId !== action.payload.itemId;
-          })
+          });
           return {
             ...todoList,
             list: newList,
-          }
+          };
         } else {
           return todoList;
         }
-      })
-    }
+      });
+    },
+    addDueDate(state, action) {
+      state.todoLists = state.todoLists.map((todoList) => {
+        if (todoList.listId === action.payload.listId) {
+          const newList = todoList.list.map((item) => {
+            if (item.itemId === action.payload.itemId) {
+              return { ...item, dueDate: action.payload.dueDate };
+            } else {
+              return item;
+            }
+          });
+          return {
+            ...todoList,
+            list: newList,
+          };
+        } else {
+          return todoList;
+        }
+      });
+    },
   },
 });
 
 const store = configureStore({
   reducer: todoSlice.reducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export const todoActions = todoSlice.actions;

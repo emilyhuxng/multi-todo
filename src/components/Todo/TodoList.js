@@ -8,7 +8,6 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 const TodoList = ({ listId, filter, title, list }) => {
   const total = list.length;
   const finished = list.filter((item) => item.isSelected).length;
-  console.log(total + " " + finished)
 
   return (
     <div className="rounded-sm border-solid border-slate-400 border h-[275px]">

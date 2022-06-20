@@ -34,7 +34,7 @@ const Todo = ({ listId, itemId, content, isSelected }) => {
   // console.log(itemId + " " + isSelected)
 
   return (
-    <div className="border min-h-[2.5rem] flex items-center w-full">
+    <div className="min-h-[2.5rem] flex items-center w-full">
       <GridViewIcon className="mx-2 text-gray-400" fontSize="small" />
       <input
         className="mx-1"
@@ -45,7 +45,7 @@ const Todo = ({ listId, itemId, content, isSelected }) => {
       />
       <input
         type="text"
-        className={"mx-1 w-4/5 " + selectedStyle}
+        className={"mx-1 w-4/5 focus:outline-none focus:bg-yellow-100 " + selectedStyle}
         htmlFor="1"
         value={content}
         onChange={todoChangeHandler}
