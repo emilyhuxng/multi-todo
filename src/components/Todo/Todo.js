@@ -34,7 +34,7 @@ const Todo = ({ listId, itemId, content, isSelected }) => {
   // console.log(itemId + " " + isSelected)
 
   return (
-    <div className="border h-10 flex items-center w-full">
+    <div className="border min-h-[2.5rem] flex items-center w-full">
       <GridViewIcon className="mx-2 text-gray-400" fontSize="small" />
       <input
         className="mx-1"

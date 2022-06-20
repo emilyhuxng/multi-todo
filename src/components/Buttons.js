@@ -5,10 +5,27 @@ import React, { useState } from "react";
 import { todoActions } from "../store/index.js";
 import { useDispatch } from "react-redux";
 import Alert from "../ui/Alert.js";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-const Buttons = () => {
+const Buttons = ({ numOfLists }) => {
+  const theme = createTheme({
+    palette: {
+      action: {
+        disabledBackground: "#ff8aa1",
+        disabled: "white",
+      },
+      error: {
+        main: "#ff4066",
+      },
+      success: {
+        main: "#78ff85",
+      },
+    },
+  });
+
   const dispatch = useDispatch();
   const [alertOpen, setAlertOpen] = useState(false);
+  const isEmpty = numOfLists === 0;
 
   const addNewListHandler = () => {
     dispatch(todoActions.addTodoList());
@@ -23,34 +40,32 @@ const Buttons = () => {
       dispatch(todoActions.deleteAllTodoLists());
     }
     setAlertOpen(false);
-  }
+  };
 
   return (
     <div>
-      <Button
-        style={{
-          backgroundColor: "#23d160",
-          textTransform: "none",
-          fontWeight: "700px",
-        }}
-        variant="contained"
-        startIcon={<AddIcon />}
-        onClick={addNewListHandler}
-      >
-        Add New List
-      </Button>
-      <Button
-        style={{
-          backgroundColor: "#ff3860",
-          textTransform: "none",
-          marginLeft: "0.5rem",
-        }}
-        variant="contained"
-        startIcon={<DeleteIcon />}
-        onClick={deleteAllListsHandler}
-      >
-        Delete All Lists
-      </Button>
+      <ThemeProvider theme={theme}>
+        <Button
+          color="success"
+          variant="contained"
+          startIcon={<AddIcon />}
+          onClick={addNewListHandler}
+          sx={{ color: "white", mx: 1 }}
+        >
+          Add New List
+        </Button>
+
+        <Button
+          color="error"
+          variant="contained"
+          startIcon={<DeleteIcon />}
+          onClick={deleteAllListsHandler}
+          disabled={isEmpty}
+          sx={{ mx: 1 }}
+        >
+          Delete All Lists
+        </Button>
+      </ThemeProvider>
       <Alert open={alertOpen} onClose={closeHandler} />
     </div>
   );

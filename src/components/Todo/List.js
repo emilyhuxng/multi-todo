@@ -41,7 +41,7 @@ const List = ({ list, listId, filter }) => {
 
   console.log(newList);
   return (
-    <div className="flex items-center justify-center flex-col">
+    <div className="flex items-center flex-col h-36 overflow-auto">
       {newList.length === 0
         ? content
         : newList.map((task) => (

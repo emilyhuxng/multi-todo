@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div>
-      <Header />
+      <Header numOfLists={todoLists.length} />
       <div className="grid grid-cols-3 gap-8 px-16">
         {todoLists.map((todoList) => (
           <TodoList
