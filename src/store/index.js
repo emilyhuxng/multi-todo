@@ -125,15 +125,31 @@ const todoSlice = createSlice({
         }
       });
     },
+    removeTodoList(state, action) {
+      state.todoLists = state.todoLists.filter(
+        (todoList) => todoList.listId !== action.payload.listId
+      );
+    },
   },
 });
 
+const preloadedState = localStorage.getItem("todoListState")
+  ? JSON.parse(localStorage.getItem("todoListState"))
+  : initialState;
+
+console.log(preloadedState);
+
 const store = configureStore({
   reducer: todoSlice.reducer,
+  preloadedState,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),
+});
+
+store.subscribe(() => {
+  localStorage.setItem("todoListState", JSON.stringify(store.getState()));
 });
 
 export const todoActions = todoSlice.actions;

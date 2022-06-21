@@ -34,7 +34,7 @@ const AddBar = ({ listId }) => {
         }
         placeholder="Add Item..."
         inputProps={{ style: { fontSize: 12 } }}
-        className="w-[90%] mx-4 my-2 "
+        className="w-[90%] mx-4 my-2"
         onChange={changeHandler}
         value={task}
       />

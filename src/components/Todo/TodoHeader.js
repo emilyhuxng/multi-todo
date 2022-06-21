@@ -11,6 +11,10 @@ const TodoHeader = ({ listId, title }) => {
     dispatch(todoActions.changeTitle({ listId, title: event.target.value }));
   };
 
+  const deleteTodoListHandler = () => {
+    dispatch(todoActions.removeTodoList({ listId }));
+  };
+
   const handleKeyPress = (event) => {
     if (event.code === "Enter") {
       event.target.blur();
@@ -18,15 +22,18 @@ const TodoHeader = ({ listId, title }) => {
   };
 
   return (
-    <div className="h-12 bg-slate-100 flex items-center ">
+    <div className="h-12 bg-slate-100 flex items-center">
       <GridViewIcon className="mx-2 text-gray-400" />
       <input
-        className=" bg-inherit text-xl font-thin w-[80%] mr-1 focus:outline-none focus:bg-yellow-100"
+        className=" bg-inherit text-xl font-thin w-[85%] mr-1 focus:outline-none focus:bg-yellow-100"
         value={title}
         onChange={titleChangeHandler}
         onKeyDown={handleKeyPress}
       />
-      <CloseIcon />
+      <CloseIcon
+        className="text-gray-400 hover:text-black hover:cursor-pointer mx-2"
+        onClick={deleteTodoListHandler}
+      />
     </div>
   );
 };
