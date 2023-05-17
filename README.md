@@ -18,3 +18,7 @@ Run `npm install`.
 Run `npm start`. This should open up a tab in your default browser. 
 
 To begin, you can add a new list by clicking the green button. To delete all lists, click the red button. For each todo list, the title can be changed and items can be added. Each todo list can be filtered by different options. Each task can have a due date set and be deleted.
+
+## Images
+
+![image](https://github.com/emilyhuxng/multi-todo/assets/61912640/ea281e35-643b-48c8-9346-23429a31bb50)
